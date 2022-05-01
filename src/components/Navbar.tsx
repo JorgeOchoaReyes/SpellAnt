@@ -3,7 +3,6 @@ import React, {useState} from 'react';
 import { lightThemeGrad } from '../Util/constants';
 import {GiHamburgerMenu, GiAnt} from 'react-icons/gi';
 import {GrClose} from 'react-icons/gr';
-import AntLogo from '../Util/ant.png';
 
 interface NavbarProps {
 
@@ -54,7 +53,7 @@ const MenuLinks = ({isOpen}) => {
                 spacing={8} 
                 align='center' 
                 justify={["center", "space-between", "flex-end", 'flex-end']}
-                direction={["column", "column", "row", "row"]}
+                direction={isOpen ?  "column" : "row"}
                 pt={[4, 4, 0, 0]}
             >
                 <MenuItem to="/" isLast={0}> Home </MenuItem>
