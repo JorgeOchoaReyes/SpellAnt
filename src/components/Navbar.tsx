@@ -4,6 +4,7 @@ import { lightThemeGrad } from '../Util/constants';
 import {GiHamburgerMenu, GiAnt} from 'react-icons/gi';
 import {GrClose} from 'react-icons/gr';
 
+
 interface NavbarProps {
 
 }
@@ -56,11 +57,7 @@ const MenuLinks = ({isOpen}) => {
                 direction={isOpen ?  "column" : "row"}
                 pt={[4, 4, 0, 0]}
             >
-                <MenuItem to="/" isLast={0}> Home </MenuItem>
-                <MenuItem to="/about" isLast={0}> About </MenuItem>
-                <MenuItem to="/contact" isLast={0}> Contact </MenuItem>
-                <MenuItem to="/other" isLast={0}> Other </MenuItem>
-                <Button colorScheme="green"> Register </Button>
+                <Button colorScheme="green"> Donate  </Button>
             </Stack>
         </Box>
     )
@@ -79,7 +76,7 @@ const NavbarContainer = ({children, ...props}) => {
             wrap='wrap'
             w="100%"
             mb={5}
-            p={5}
+            p={3}
             px={1}
             bg={lightThemeGrad}
             opacity={.9}

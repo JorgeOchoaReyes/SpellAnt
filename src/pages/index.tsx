@@ -1,31 +1,27 @@
 import {
-  Text
+  Text, Box
 } from '@chakra-ui/react';
-import { dehydrate, useQuery } from 'react-query';
-import { queryClient, getDogs } from '../../server/api';
+import { useGetDogsQuery } from '../../server/generated/graphql';
 import { Colony } from '../components/Colony';
 import {Layout} from '../components/Layout';
+import { withUrqlClient } from "next-urql";
+import { createUrqlClient } from '../Util/createUrql';
 
-export async function getServerSideProps() {
-  await queryClient.prefetchQuery(["dogs"], () => getDogs());
-
-  return {
-    props: {
-      dehydratedState: dehydrate(queryClient)
-    }
-  }
-}
 
 const Index = ({name}) => {
-  const {data} = useQuery(["dogs"], () => getDogs()); 
 
+  const [{data, fetching}] = useGetDogsQuery(); 
+
+  if(!fetching && !data) {
+    return <div> Query did not return anything after loading </div>
+  }
   
   return (
     <Layout>
-        <Colony />
+      <Colony /> 
     </Layout>
 
   ) 
 }
 
-export default Index
+export default withUrqlClient(createUrqlClient)(Index); 
