@@ -58,7 +58,7 @@ const RightContent: React.FC<RightContent> = ({found}) => {
 
                     <VStack display={showText ? "flex" : "none"} textColor='black'>
                         {found.map((t) => {
-                            return <Text > {t} </Text>
+                            return <Text key={t} > {t} </Text>
                         }) }
                     </VStack>
                 
@@ -74,7 +74,9 @@ export const Colony: React.FC<ColonyProps> = ({}) => {
     const [words, setWords] = React.useState(['anbc', "bcad", "cdea", "abcd", "dca"]);
     const [chars, setChars] = React.useState(['a', 'b', 'c', 'd', 'e', 'f', 'g']); 
     const [found, setFound] = React.useState(["asd"]); 
-    const [score, setScore] = React.useState(0)
+    const [score, setScore] = React.useState(0); 
+
+
 
     const foundUpdate = (word: string) => {
         found.push(word); 

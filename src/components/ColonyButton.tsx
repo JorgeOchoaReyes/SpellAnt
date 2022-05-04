@@ -141,7 +141,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                     }}>
-                    <span id="Button1" className="blue"><i>{char[0]}</i></span>
+                    <span className="blue"><i>{char[0]}</i></span>
                 </Box>
 
                 <Box as="button"   id="01" onClick={ () => handleSelect(char[1])}

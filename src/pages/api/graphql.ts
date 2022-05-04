@@ -3,12 +3,19 @@ import Cors from 'micro-cors';
 import { buildSchema } from "type-graphql";
 import 'reflect-metadata';
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
-import { DogResolver } from "../../../server/graphql/Resolvers/dogs";
+import { DailyResolver } from "../../../server/graphql/Resolvers/daily";
+import * as mongoose from 'mongoose'; 
+require('dotenv').config();
+
+
+mongoose.connect(process.env.NEXT_PUBLIC_DB_URI)
+    .then(() => console.log('You have Successfully Connected MongoDb.........'))
+    .catch(err => console.error("There was an error connecting with mongoose: " + err));
 
 const cors = Cors(); 
 
 const schema = await buildSchema({
-    resolvers: [DogResolver]
+    resolvers: [DailyResolver]
 }) 
 
 const server  = new ApolloServer({
