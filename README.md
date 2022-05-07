@@ -80,8 +80,8 @@ Don't forget to give the project a star! Thanks again!
 
 ## Acknowledgments
 
-Chekc out Jack Herringtons vidoe on nextjs with graphql. https://www.youtube.com/watch?v=XzE-PzALyDc
-It helped me get started with this projects. I chose to remove react query and use urql instead and removed mantine and went with chakra for this projects. 
+Check out Jack Herringtons video on nextjs with graphql. https://www.youtube.com/watch?v=XzE-PzALyDc
+It helped me get started with this project. I chose to remove react query and use urql instead and remove mantine and went with chakra for this project. 
 
 <!-- LICENSE -->
 ## License
