@@ -2,8 +2,6 @@ import { ObjectType, Field, ID } from "type-graphql";
 
 @ObjectType()
 export class Daily {
-  @Field(() => String)
-  date!: String;
 
   @Field(() => [String]) 
   hexChars!: String[]; 
@@ -11,7 +9,7 @@ export class Daily {
   @Field(() => [String])
   wordPool!: String[]; 
 
-  @Field(() => String)
-  _id!: String;
+  @Field(() => Number)
+  _id!: Number;
  
 }

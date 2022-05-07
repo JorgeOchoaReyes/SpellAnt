@@ -16,6 +16,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Layout.tsx"],
+  "include": ["custom.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Layout.tsx"],
   "exclude": ["node_modules"]
 }

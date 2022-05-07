@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 require('dotenv').config();
 
+
 const MONGODB_URI = process.env.NEXT_PUBLIC_DB_URI; 
 
 if (!MONGODB_URI) {
@@ -14,6 +15,7 @@ if (!MONGODB_URI) {
  * in development. This prevents connections growing exponentially
  * during API Route usage.
  */
+
 let cached = global.mongoose
 
 if (!cached) {
@@ -30,7 +32,7 @@ async function dbConnect() {
       bufferCommands: false,
     }
 
-    cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
+    cached.promise = await mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
       return mongoose
     })
   }

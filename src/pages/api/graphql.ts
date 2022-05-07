@@ -2,15 +2,17 @@ import {ApolloServer} from "apollo-server-micro";
 import Cors from 'micro-cors'; 
 import { buildSchema } from "type-graphql";
 import 'reflect-metadata';
-import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
+import { ApolloServerPluginLandingPageDisabled, ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import { DailyResolver } from "../../../server/graphql/Resolvers/daily";
-import * as mongoose from 'mongoose'; 
+import dbConnect from "../../../Db/dbConnect";
+import mongoose from "mongoose";
+
 require('dotenv').config();
 
+if(mongoose.connection.readyState == 0) {
+    let db = await dbConnect()
+}
 
-mongoose.connect(process.env.NEXT_PUBLIC_DB_URI)
-    .then(() => console.log('You have Successfully Connected MongoDb.........'))
-    .catch(err => console.error("There was an error connecting with mongoose: " + err));
 
 const cors = Cors(); 
 
@@ -20,7 +22,9 @@ const schema = await buildSchema({
 
 const server  = new ApolloServer({
     schema,
-    plugins: [ApolloServerPluginLandingPageGraphQLPlayground()]
+    plugins: [process.env.NODE_ENV === 'production'
+    ? ApolloServerPluginLandingPageDisabled()
+    : ApolloServerPluginLandingPageGraphQLPlayground(),]
 })
 
 const startServer = server.start();
@@ -29,14 +33,15 @@ export const config = {
     api: {
         bodyParser: false
     }
-  }
+}
 
-export default cors( async (req, res) => {
+export default async (req, res) => {
     await startServer;
+    
     if (req.method === 'OPTIONS') {
         res.end();
         return false;
     }
     return await server.createHandler({path: "/api/graphql"})(req, res);
-});
+};
 

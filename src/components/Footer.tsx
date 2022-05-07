@@ -27,12 +27,12 @@ import { textColor } from '../Util/constants'
         align="center"
       >
         <ButtonGroup variant="ghost">
-          <Flex align='center'>
-            <Text align='center'> Check Out The Github and contribute!  </Text>
+          <Flex align='center' textColor='whiite'>
+            <Text textColor='whiite' align='center'> Check Out The Github and contribute!  </Text>
           </Flex>
 
           <Flex align='center'>
-            <IconButton as="a" href="https://github.com/JorgeOchoaReyes/SpellAnt" aria-label="GitHub" icon={<FaGithub fontSize="1.25rem" />} />
+            <IconButton as="a"  href="https://github.com/JorgeOchoaReyes/SpellAnt" aria-label="GitHub" icon={<FaGithub color="white" fontSize="1.25rem" />} />
           </Flex>
 
         </ButtonGroup>

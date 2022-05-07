@@ -29,7 +29,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
             setOpenEnter(true); 
             return; 
         }
-        if(!input.includes(char[3])) {
+        if(!input.includes(char[0])) {
             setEnterError(1);
             setOpenEnter(true); 
             return;
@@ -61,18 +61,18 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
     }
 
     const handleShuffle = () => {
-        let m = char[3];
+        let m = char[0];
 
         let temp = char;  
-        temp[3] = temp[6]; 
+        temp[0] = temp[6]; 
         temp[6] = m; 
         temp.pop(); 
 
         temp.sort(() => Math.random() - 0.5);
 
         temp.push(m); 
-        temp[6] = temp[3];
-        temp[3] = m; 
+        temp[6] = temp[0];
+        temp[0] = m; 
 
         console.log(temp); 
         setChar([...temp]); 
@@ -87,61 +87,50 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
         switch (type){
             case 0:
                 return <> 
-                    <PopoverArrow />
-                    <PopoverCloseButton />
                     <PopoverHeader> Word is not in list </PopoverHeader>
                     <PopoverBody> This word is not in the word list.  </PopoverBody>
                 </>
 
             case 1: 
                 return <>
-                    <PopoverArrow />
-                    <PopoverCloseButton />
                     <PopoverHeader> Word must include middle letter.  </PopoverHeader>
                     <PopoverBody> The word you typed does not include the middle letter. </PopoverBody>
                 </>
             
             case 2: 
                 return <>
-                    <PopoverArrow />
-                    <PopoverCloseButton />
                     <PopoverHeader> You havent typed anything!  </PopoverHeader>
                     <PopoverBody> Select words to check! </PopoverBody>
                 </>
 
             case 3: 
             return <>
-                <PopoverArrow />
-                <PopoverCloseButton />
                 <PopoverHeader> Word is too short!  </PopoverHeader>
                 <PopoverBody> Word must be at least 4 characters long </PopoverBody>
             </>
 
             case 4: 
             return <>
-                <PopoverArrow />
-                <PopoverCloseButton />
+
                 <PopoverHeader> Word Already found! </PopoverHeader>
                 <PopoverBody> You already found this word! </PopoverBody>
             </>
         }
-
-
     }
     
     return (
         <Flex flexDirection='column'>
             <Box>
-                <Input variant='filled' bg='white' isReadOnly value={input} textColor="black" />
+                <Input style={{animation: openEnter ? 'shake 0.5s' : '', animationIterationCount: openEnter ? 1 : 0}} variant='filled' bg='white' fontSize={{base:24}} isReadOnly value={input} textColor="black" />
             </Box>
             <div className="buttons">
-                <Box as="button"   id="00" onClick={ () => handleSelect(char[0])}
+                <Box as="button"   id="00" onClick={ () => handleSelect(char[3])}
                     transform='scale(1.1)' 
                     transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                     }}>
-                    <span className="blue"><i>{char[0]}</i></span>
+                    <span className="blue"><i>{char[3]}</i></span>
                 </Box>
 
                 <Box as="button"   id="01" onClick={ () => handleSelect(char[1])}
@@ -161,13 +150,13 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                 }}>
                     <span className="blue"><i>{char[2]}</i></span>
                 </Box>
-                <Box as="button"   id="03"  onClick={ () => handleSelect(char[3])}
+                <Box as="button"   id="03"  onClick={ () => handleSelect(char[0])}
                     transform='scale(1.1)' 
                     transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
-                    <span className="red"><i>{char[3]}</i></span>
+                    <span className="red"><i>{char[0]}</i></span>
                 </Box>
                 <Box as="button"   id="04" onClick={ () => handleSelect(char[4])}
                     transform='scale(1.1)' 
@@ -224,6 +213,8 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     <Button bg="green" onClick={() => handleEnter()}> Enter </Button>
                   </PopoverTrigger>
                   <PopoverContent>
+                    <PopoverArrow />
+                    <PopoverCloseButton />
                     {
                         selectError(enterError)
                     }

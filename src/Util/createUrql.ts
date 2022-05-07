@@ -20,7 +20,6 @@ const errorExchange: Exchange = ({forward}) => ops$ => {
 //URQL Config
 export const createUrqlClient = (ssrExchange: any) => { 
   let url = process.env.NODE_ENV === 'production' ? process.env.NEXT_PUBLIC_API_URL : 'http://localhost:3000/api/graphql'
-  console.log(url)
   return {
     url: url as string,
     fetchOptions: {

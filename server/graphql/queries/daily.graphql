@@ -1,7 +1,7 @@
 query getDaily {
     daily {
-        date
         hexChars
         wordPool
+        _id
     }
 }

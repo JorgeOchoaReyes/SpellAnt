@@ -19,8 +19,7 @@ export type Scalars = {
 
 export type Daily = {
   __typename?: 'Daily';
-  _id: Scalars['String'];
-  date: Scalars['String'];
+  _id: Scalars['Float'];
   hexChars: Array<Scalars['String']>;
   wordPool: Array<Scalars['String']>;
 };
@@ -39,15 +38,15 @@ export type QueryGetOtherDailyArgs = {
 export type GetDailyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetDailyQuery = { __typename?: 'Query', daily?: { __typename?: 'Daily', date: string, hexChars: Array<string>, wordPool: Array<string> } | null };
+export type GetDailyQuery = { __typename?: 'Query', daily?: { __typename?: 'Daily', hexChars: Array<string>, wordPool: Array<string>, _id: number } | null };
 
 
 export const GetDailyDocument = gql`
     query getDaily {
   daily {
-    date
     hexChars
     wordPool
+    _id
   }
 }
     `;

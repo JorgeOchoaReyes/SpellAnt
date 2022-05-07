@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import { lightThemeGrad } from '../Util/constants';
 import {GiHamburgerMenu, GiAnt} from 'react-icons/gi';
 import {GrClose} from 'react-icons/gr';
+import NextLink from 'next/link';
 
 
 interface NavbarProps {
@@ -57,7 +58,7 @@ const MenuLinks = ({isOpen}) => {
                 direction={isOpen ?  "column" : "row"}
                 pt={[4, 4, 0, 0]}
             >
-                <Button colorScheme="green"> Donate  </Button>
+                <a  href="https://www.buymeacoffee.com/jorgeochoareyes" target="_blank" rel="noopener noreferrer"> <Button colorScheme="green"> ❤️ Donate  </Button> </a>
             </Stack>
         </Box>
     )
