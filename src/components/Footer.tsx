@@ -27,8 +27,8 @@ import { textColor } from '../Util/constants'
         align="center"
       >
         <ButtonGroup variant="ghost">
-          <Flex align='center' textColor='whiite'>
-            <Text textColor='whiite' align='center'> Check Out The Github and contribute!  </Text>
+          <Flex align='center' textColor='white'>
+            <Text textColor='white' align='center'> Check Out The Github and contribute!  </Text>
           </Flex>
 
           <Flex align='center'>

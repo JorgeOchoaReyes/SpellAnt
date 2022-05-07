@@ -35,9 +35,8 @@ export const config = {
     }
 }
 
-export default async (req, res) => {
+export default  async (req, res) => {
     await startServer;
-    
     if (req.method === 'OPTIONS') {
         res.end();
         return false;
