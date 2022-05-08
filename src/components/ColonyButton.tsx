@@ -126,7 +126,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
             <div className="buttons">
                 <Box as="button"   id="00" onClick={ () => handleSelect(char[3])}
                     transform='scale(1.1)' 
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    transition='all 0.1s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                     }}>
@@ -135,7 +135,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
 
                 <Box as="button"   id="01" onClick={ () => handleSelect(char[1])}
                     transform='scale(1.1)'     
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    transition='all 0.1s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                     }}>
@@ -144,7 +144,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     <br />
                 <Box as="button"   id="02" onClick={ () => handleSelect(char[2])}
                     transform='scale(1.1)' 
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    transition='all 0.1s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
@@ -152,7 +152,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                 </Box>
                 <Box as="button"   id="03"  onClick={ () => handleSelect(char[0])}
                     transform='scale(1.1)' 
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    transition='all 0.1s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
@@ -160,7 +160,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                 </Box>
                 <Box as="button"   id="04" onClick={ () => handleSelect(char[4])}
                     transform='scale(1.1)' 
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    transition='all 0.1s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
@@ -170,7 +170,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     <br />
                 <Box as="button"   id="05" onClick={ () => handleSelect(char[5])}
                     transform='scale(1.1)'     
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    transition='all 0.1s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
@@ -178,7 +178,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                 </Box>
                 <Box as="button"   id="06" onClick={ () => handleSelect(char[6])}
                     transform='scale(1.1)'     
-                    transition='all 0.2s cubic-bezier(.08,.52,.52,1)'
+                    transition='all 0.1s cubic-bezier(.08,.52,.52,1)'
                     _active={{
                       transform: 'scale(0.8)',
                 }}>

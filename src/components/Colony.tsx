@@ -88,7 +88,7 @@ const FinishModal = ({onClose, isOpen}) => {
 
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent>
+          <ModalContent  bg="black">
             <ModalHeader>Nice</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
@@ -129,7 +129,6 @@ export const Colony: React.FC<ColonyProps> = ({}) => {
 
     const scoreUpdate = (addToScore: number) => {
         let newScore = Math.round(((found.length+1)/data.daily.wordPool.length) * 100);
-        newScore = addToScore
         setScore(newScore); 
         if(newScore > 95) {
             onOpen(); 
