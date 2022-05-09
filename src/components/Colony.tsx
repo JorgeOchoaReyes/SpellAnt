@@ -88,19 +88,19 @@ const FinishModal = ({onClose, isOpen}) => {
 
         <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
           <ModalOverlay />
-          <ModalContent  bg="black">
-            <ModalHeader>Nice</ModalHeader>
+          <ModalContent textColor="black">
+            <ModalHeader textColor="black">Nice</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <Text> You found all the words for today! Come back tomorrow for more word finding. </Text>
+              <Text textColor="black"> You found all the words for today! Come back tomorrow for more word finding. </Text>
               <br />
-              <Text> If you enjoy the game consider donating :{')'}. It would be greatly appreciated!</Text>
+              <Text textColor="black"> If you enjoy the game consider donating :{')'}. It would be greatly appreciated!</Text>
               <br />
-              <Text> For now you can reset the game or wait till tomorrow for new words. </Text>
+              <Text textColor="black" > For now you can reset the game or wait till tomorrow for new words. </Text>
             </ModalBody>
 
             <ModalFooter>
-              <Button colorScheme='blue' mr={3} onClick={onClose}>
+              <Button textColor="black" colorScheme='blue' mr={3} onClick={onClose}>
                 Close
               </Button>
             </ModalFooter>
