@@ -30,6 +30,9 @@ const theme = extendTheme({
       button: '12px',
     },
   },
+  black: {
+    textColor: 'black'
+  },
   colors: {
     black: '#16161D',
   },

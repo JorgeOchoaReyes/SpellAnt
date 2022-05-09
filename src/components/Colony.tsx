@@ -4,11 +4,11 @@ import {
     Flex, 
     SlideFade, 
     Text, Heading,
-     VStack, SliderFilledTrack, 
-     Slider, SliderMark, SliderThumb, 
-     SliderTrack, Center, CircularProgress, 
-     Button, Modal, ModalBody, ModalCloseButton, 
-     ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
+    VStack, SliderFilledTrack, 
+    Slider, SliderMark, SliderThumb, 
+    SliderTrack, Center, CircularProgress, 
+    Button, Modal, ModalBody, ModalCloseButton, 
+    ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from '@chakra-ui/react';
 import {ColonyButton} from './ColonyButton'; 
 import { animationDelay } from '../Util/constants';
 import {BiArrowFromTop} from 'react-icons/bi'; 
@@ -84,14 +84,14 @@ const RightContent: React.FC<RightContent> = ({found}) => {
 }
 
 const FinishModal = ({onClose, isOpen}) => {
-    return <>
+    return <Box>
 
-        <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
+        <Modal variant='black' blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay textColor="black" />
           <ModalContent textColor="black">
             <ModalHeader textColor="black">Nice</ModalHeader>
             <ModalCloseButton />
-            <ModalBody>
+            <ModalBody textColor="black">
               <Text textColor="black"> You found all the words for today! Come back tomorrow for more word finding. </Text>
               <br />
               <Text textColor="black"> If you enjoy the game consider donating :{')'}. It would be greatly appreciated!</Text>
@@ -106,7 +106,7 @@ const FinishModal = ({onClose, isOpen}) => {
             </ModalFooter>
           </ModalContent>
         </Modal>
-  </>
+  </Box>
 }
 
 

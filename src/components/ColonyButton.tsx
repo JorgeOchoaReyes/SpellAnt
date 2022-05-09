@@ -87,33 +87,33 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
         switch (type){
             case 0:
                 return <> 
-                    <PopoverHeader> Word is not in list </PopoverHeader>
-                    <PopoverBody> This word is not in the word list.  </PopoverBody>
+                    <PopoverHeader textColor="black"> Word is not in list </PopoverHeader>
+                    <PopoverBody textColor="black"> This word is not in the word list.  </PopoverBody>
                 </>
 
             case 1: 
                 return <>
-                    <PopoverHeader> Word must include middle letter.  </PopoverHeader>
-                    <PopoverBody> The word you typed does not include the middle letter. </PopoverBody>
+                    <PopoverHeader textColor="black"> Word must include middle letter.  </PopoverHeader>
+                    <PopoverBody textColor="black"> The word you typed does not include the middle letter. </PopoverBody>
                 </>
             
             case 2: 
                 return <>
-                    <PopoverHeader> You havent typed anything!  </PopoverHeader>
-                    <PopoverBody> Select words to check! </PopoverBody>
+                    <PopoverHeader textColor="black"> You havent typed anything!  </PopoverHeader>
+                    <PopoverBody textColor="black"> Select words to check! </PopoverBody>
                 </>
 
             case 3: 
             return <>
-                <PopoverHeader> Word is too short!  </PopoverHeader>
-                <PopoverBody> Word must be at least 4 characters long </PopoverBody>
+                <PopoverHeader textColor="black"> Word is too short!  </PopoverHeader>
+                <PopoverBody textColor="black"> Word must be at least 4 characters long </PopoverBody>
             </>
 
             case 4: 
             return <>
 
-                <PopoverHeader> Word Already found! </PopoverHeader>
-                <PopoverBody> You already found this word! </PopoverBody>
+                <PopoverHeader textColor="black"> Word Already found! </PopoverHeader>
+                <PopoverBody textColor="black"> You already found this word! </PopoverBody>
             </>
         }
     }
@@ -191,6 +191,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                 <Popover        
                      isOpen={openDelete}
                      onClose={() => setOpenDelete(!openDelete)}
+                    variant='white'
                 >
                   <PopoverTrigger>
                     <Button onClick={() => handleDelete()} bg='red' > Delete </Button>
@@ -198,8 +199,8 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                   <PopoverContent>
                     <PopoverArrow />
                     <PopoverCloseButton />
-                    <PopoverHeader>Can not delete nothing! </PopoverHeader>
-                    <PopoverBody>Type something first to delete words! </PopoverBody>
+                    <PopoverHeader textColor="black">Can not delete nothing! </PopoverHeader>
+                    <PopoverBody textColor="black">Type something first to delete words! </PopoverBody>
                   </PopoverContent>
                 </Popover>
 
