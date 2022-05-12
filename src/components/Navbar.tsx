@@ -12,7 +12,7 @@ interface NavbarProps {
 
 const Logo = (props) => {
     return(
-        <Box {...props} flexDirection='row' display='flex'  justifyContent='center' >
+        <Box {...props} flexDirection='row' display='flex' align="center" justifyContent='center' >
             <Flex align='center' >
                 <GiAnt color='black' size={25}/>
             </Flex>

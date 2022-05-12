@@ -51,9 +51,11 @@ I love these simple word games but I dont want to pay a subscription to play the
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Set Global word set.
-- [ ] Store session of user with words they have found for a day
+- [X] Set Global word set.
+- [ ] Get Random word set. 
 - [ ] Ability to choose previous word sets from the past days
+- [ ] Store session of user with words they have found for a day
+
 
 
 
