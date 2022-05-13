@@ -130,7 +130,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                     }}>
-                    <span className="blue"><i>{char[3]}</i></span>
+                    <span className="spanbtn blue"><i>{char[3]}</i></span>
                 </Box>
 
                 <Box as="button"   id="01" onClick={ () => handleSelect(char[1])}
@@ -139,7 +139,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                     }}>
-                    <span className="blue"><i>{char[1]}</i></span>
+                    <span className="spanbtn blue"><i>{char[1]}</i></span>
                 </Box>
                     <br />
                 <Box as="button"   id="02" onClick={ () => handleSelect(char[2])}
@@ -148,7 +148,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
-                    <span className="blue"><i>{char[2]}</i></span>
+                    <span className="spanbtn blue"><i>{char[2]}</i></span>
                 </Box>
                 <Box as="button"   id="03"  onClick={ () => handleSelect(char[0])}
                     transform='scale(1.1)' 
@@ -156,7 +156,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
-                    <span className="red"><i>{char[0]}</i></span>
+                    <span className="spanbtn red"><i>{char[0]}</i></span>
                 </Box>
                 <Box as="button"   id="04" onClick={ () => handleSelect(char[4])}
                     transform='scale(1.1)' 
@@ -164,7 +164,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
-                    <span className="blue"><i>{char[4]}</i></span>
+                    <span className="spanbtn blue"><i>{char[4]}</i></span>
                 </Box>
 
                     <br />
@@ -174,7 +174,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
-                    <span className="blue"><i>{char[5]}</i></span>
+                    <span className="spanbtn blue"><i>{char[5]}</i></span>
                 </Box>
                 <Box as="button"   id="06" onClick={ () => handleSelect(char[6])}
                     transform='scale(1.1)'     
@@ -182,7 +182,7 @@ export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUp
                     _active={{
                       transform: 'scale(0.8)',
                 }}>
-                    <span className="blue"><i>{char[6]}</i></span>
+                    <span className="spanbtn blue"><i>{char[6]}</i></span>
                 </Box>
                     <br />
             </div>

@@ -13,8 +13,6 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
-  /** The javascript `Date` as string. Type represents date and time as the ISO Date string. */
-  DateTime: any;
 };
 
 export type Daily = {
@@ -27,18 +25,25 @@ export type Daily = {
 export type Query = {
   __typename?: 'Query';
   daily?: Maybe<Daily>;
-  getOtherDaily?: Maybe<Daily>;
+  findDaily?: Maybe<Daily>;
 };
 
 
-export type QueryGetOtherDailyArgs = {
-  date: Scalars['DateTime'];
+export type QueryFindDailyArgs = {
+  number: Scalars['Int'];
 };
 
 export type GetDailyQueryVariables = Exact<{ [key: string]: never; }>;
 
 
 export type GetDailyQuery = { __typename?: 'Query', daily?: { __typename?: 'Daily', hexChars: Array<string>, wordPool: Array<string>, _id: number } | null };
+
+export type FindDailyQueryVariables = Exact<{
+  number: Scalars['Int'];
+}>;
+
+
+export type FindDailyQuery = { __typename?: 'Query', findDaily?: { __typename?: 'Daily', hexChars: Array<string>, wordPool: Array<string>, _id: number } | null };
 
 
 export const GetDailyDocument = gql`
@@ -53,4 +58,17 @@ export const GetDailyDocument = gql`
 
 export function useGetDailyQuery(options?: Omit<Urql.UseQueryArgs<GetDailyQueryVariables>, 'query'>) {
   return Urql.useQuery<GetDailyQuery>({ query: GetDailyDocument, ...options });
+};
+export const FindDailyDocument = gql`
+    query findDaily($number: Int!) {
+  findDaily(number: $number) {
+    hexChars
+    wordPool
+    _id
+  }
+}
+    `;
+
+export function useFindDailyQuery(options: Omit<Urql.UseQueryArgs<FindDailyQueryVariables>, 'query'>) {
+  return Urql.useQuery<FindDailyQuery>({ query: FindDailyDocument, ...options });
 };

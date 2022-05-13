@@ -1,0 +1,7 @@
+query findDaily($number: Int!) {
+  findDaily(number: $number) {
+	hexChars
+    wordPool
+    _id
+  }
+}

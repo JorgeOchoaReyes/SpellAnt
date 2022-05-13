@@ -1,10 +1,11 @@
-import { Box, Text, Button, Image, Stack, Link, Flex} from '@chakra-ui/react';
+import { Box, Text, Button, Image, Stack, Link, Flex, Menu, MenuButton, MenuList} from '@chakra-ui/react';
 import React, {useState} from 'react';
 import { lightThemeGrad } from '../Util/constants';
 import {GiHamburgerMenu, GiAnt} from 'react-icons/gi';
-import {GrClose} from 'react-icons/gr';
+import {GrClose, GrFormNextLink} from 'react-icons/gr';
+import { ChevronDownIcon } from '@chakra-ui/icons';
+import { useRouter } from 'next/router';
 import NextLink from 'next/link';
-
 
 interface NavbarProps {
 
@@ -45,6 +46,7 @@ const MenuItem = ({children, isLast, to='/', ...rest}) => {
 }
 
 const MenuLinks = ({isOpen}) => {
+    const router = useRouter(); 
     return (
         <Box 
             display={{base: isOpen ? 'block' : 'none', md: "block"}}
@@ -58,7 +60,27 @@ const MenuLinks = ({isOpen}) => {
                 direction={isOpen ?  "column" : "row"}
                 pt={[4, 4, 0, 0]}
             >
+                <Menu>
+                  {({ isOpen }) => (
+                    <>
+                        <MenuButton as={Button} rightIcon={<ChevronDownIcon />}>
+                          Choose Set
+                        </MenuButton>
+                        <MenuList bg='white'>
+                            <NextLink href="/select/[id]"  as={`/select/${Math.floor(Math.random() * 10000)}`} >
+                                <MenuItem as={Button} 
+                                    isLast={undefined} 
+                                    textColor='black'> 
+                                    <Button textColor='white' colorScheme='green' bg='teal'> Im feeling random! </Button> 
+                                </MenuItem>
+                            </NextLink>
+                        </MenuList>
+
+                    </>
+                  )}
+                </Menu>
                 <a  href="https://www.buymeacoffee.com/jorgeochoareyes" target="_blank" rel="noopener noreferrer"> <Button colorScheme="green"> ❤️ Donate  </Button> </a>
+
             </Stack>
         </Box>
     )
@@ -101,6 +123,9 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             />
             <MenuToggle toggle={toggle} isOpen={isOpen} />
             <MenuLinks isOpen={isOpen} />
+
+
+
         </NavbarContainer>
     );
 }

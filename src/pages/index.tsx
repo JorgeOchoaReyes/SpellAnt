@@ -1,6 +1,3 @@
-import {
-  Text, Box, Center
-} from '@chakra-ui/react';
 import { Colony } from '../components/Colony';
 import {Layout} from '../components/Layout';
 import { withUrqlClient } from "next-urql";

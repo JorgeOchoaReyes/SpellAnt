@@ -12,11 +12,11 @@ import {
 import {ColonyButton} from './ColonyButton'; 
 import { animationDelay } from '../Util/constants';
 import {BiArrowFromTop} from 'react-icons/bi'; 
-import { useGetDailyQuery } from '../../server/generated/graphql';
+import { useFindDailyQuery, useGetDailyQuery } from '../../server/generated/graphql';
 
 
 interface ColonyProps {
-
+    selectedNumber: number; 
 }
 
 interface RightContent {
@@ -110,8 +110,12 @@ const FinishModal = ({onClose, isOpen}) => {
 }
 
 
-export const Colony: React.FC<ColonyProps> = ({}) => {
-    const [{data, fetching}] = useGetDailyQuery();
+export const Colonies: React.FC<ColonyProps> = ({selectedNumber}) => {
+    const [{data, fetching}] = useFindDailyQuery({
+        variables: {
+            number: selectedNumber
+        }
+    })
     const [found, setFound] = React.useState([]); 
     const [score, setScore] = React.useState(0); 
     const {isOpen, onOpen, onClose } = useDisclosure();
@@ -126,10 +130,11 @@ export const Colony: React.FC<ColonyProps> = ({}) => {
         found.push(word); 
         setFound([...found])
     }
+  
 
     const scoreUpdate = (addToScore: number) => {
-        let newScore = Math.round(((found.length+1)/data.daily.wordPool.length) * 100);
-        if(found.length == data.daily.wordPool.length) {
+        let newScore = Math.round(((found.length+1)/data.findDaily.wordPool.length) * 100);
+        if(found.length == data.findDaily.wordPool.length) {
             setScore(100); 
             onOpen();
             return; 
@@ -187,7 +192,7 @@ export const Colony: React.FC<ColonyProps> = ({}) => {
             }
 
             <Flex h={{base: "fit", sm: "90vh", xl: '80vh'}} paddingBottom={20} align='center'  direction={{base: "column-reverse", md: "row"}}>
-                    <LeftContent  characters={data.daily.hexChars} words={data.daily.wordPool} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
+                    <LeftContent  characters={data.findDaily.hexChars} words={data.findDaily.wordPool} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
                     <RightContent found={found} /> 
             </Flex> 
             <FinishModal isOpen={isOpen} onClose={onClose}  /> 
