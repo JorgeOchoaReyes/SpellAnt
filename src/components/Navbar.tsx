@@ -63,7 +63,7 @@ const MenuLinks = ({isOpen}) => {
                 <Menu>
                   {({ isOpen }) => (
                     <>
-                        <MenuButton as={Button} colorScheme="blackAlpha" textColor="black" rightIcon={<ChevronDownIcon />}>
+                        <MenuButton as={Button} colorScheme="whiteAlpha" textColor="black" rightIcon={<ChevronDownIcon />}>
                           Choose Set
                         </MenuButton>
                         <MenuList bg='white'>
