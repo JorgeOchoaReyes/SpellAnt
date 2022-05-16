@@ -13,6 +13,7 @@ import {ColonyButton} from './ColonyButton';
 import { animationDelay } from '../Util/constants';
 import {BiArrowFromTop} from 'react-icons/bi'; 
 import { useGetDailyQuery } from '../../server/generated/graphql';
+import Calendar from 'react-calendar';
 
 
 interface ColonyProps {
@@ -24,7 +25,7 @@ interface RightContent {
 }
 
 
-const LeftContent = ({characters, words, foundUpdate, found, scoreUpdate}) => {
+const LeftContent = ({characters, words, foundUpdate, found, scoreUpdate, _id}) => {
 
     return (
             <VStack 
@@ -35,7 +36,8 @@ const LeftContent = ({characters, words, foundUpdate, found, scoreUpdate}) => {
                 >
                 <SlideFade delay={animationDelay} in={true} offsetX='-100px'>
                     <Box textColor='white'>
-                        <ColonyButton chars={characters} words={words} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
+                        <Text textColor={'black'}> Hex Id: {_id} </Text>
+                        <ColonyButton chars={characters} _id={_id} words={words} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
                     </Box>
                 </SlideFade>
             </VStack>
@@ -53,7 +55,7 @@ const RightContent: React.FC<RightContent> = ({found}) => {
     return (
         <VStack 
             w="full" 
-            h="full" 
+            h="full"  
             p="10"  
             justifyContent='space-around'
             alignItems='center' >
@@ -141,7 +143,7 @@ export const Colony: React.FC<ColonyProps> = ({}) => {
         return <Center h="100vh" textColor='black' fontSize='xl'> <CircularProgress m='auto' isIndeterminate color='green.300' />  </Center>
     }
 
-    if(!fetching && !data) {
+    if (!fetching && !data) {
         return <Center h="100vh" textColor='black' fontSize='xl'> Error 404: No Data Was Fetched. :{'('} Try again. </Center>
     }
 
@@ -187,7 +189,7 @@ export const Colony: React.FC<ColonyProps> = ({}) => {
             }
 
             <Flex h={{base: "fit", sm: "90vh", xl: '80vh'}} paddingBottom={20} align='center'  direction={{base: "column-reverse", md: "row"}}>
-                    <LeftContent  characters={data.daily.hexChars} words={data.daily.wordPool} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
+                    <LeftContent  characters={data.daily.hexChars} words={data.daily.wordPool} _id={data.daily._id} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
                     <RightContent found={found} /> 
             </Flex> 
             <FinishModal isOpen={isOpen} onClose={onClose}  /> 

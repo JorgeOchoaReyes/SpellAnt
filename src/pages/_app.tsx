@@ -1,7 +1,8 @@
 import { Box, ChakraProvider } from '@chakra-ui/react'
 import theme from '../theme'
 import { AppProps } from 'next/app'
-import "../../styles.css"
+import "../../styles.css";
+import 'react-calendar/dist/Calendar.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

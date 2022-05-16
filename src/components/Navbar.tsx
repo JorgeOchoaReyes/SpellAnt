@@ -6,10 +6,13 @@ import {GrClose, GrFormNextLink} from 'react-icons/gr';
 import { ChevronDownIcon } from '@chakra-ui/icons';
 import { useRouter } from 'next/router';
 import NextLink from 'next/link';
+import Calendar from 'react-calendar';
 
 interface NavbarProps {
 
 }
+
+
 
 const Logo = (props) => {
     return(
@@ -46,7 +49,14 @@ const MenuItem = ({children, isLast, to='/', ...rest}) => {
 }
 
 const MenuLinks = ({isOpen}) => {
-    const router = useRouter(); 
+    const [date, setdate] = React.useState(new Date());
+    const createId = (date: Date) => {
+        let strings = [`${date.getUTCDate()}`, `${date.getUTCMonth()}`, `${date.getUTCFullYear()}`]
+        let udate =   strings[0] + strings[1] + strings[2][strings[2].length - 1];  
+        
+        let globalSet = Math.floor(5000*Math.sin(parseInt(udate)) + 5001); 
+        return globalSet; 
+    }
     return (
         <Box 
             display={{base: isOpen ? 'block' : 'none', md: "block"}}
@@ -67,13 +77,43 @@ const MenuLinks = ({isOpen}) => {
                           Choose Set
                         </MenuButton>
                         <MenuList bg='white'>
-                            <NextLink href="/select/[id]"  as={`/select/${Math.floor(Math.random() * 10000)}`} >
-                                <MenuItem as={Button} 
-                                    isLast={undefined} 
-                                    textColor='black'> 
+                           
+                            <MenuItem as={Button} 
+                                isLast={undefined} 
+                                textColor='black'> 
+                                <NextLink href="/select/[id]"  as={`/select/${Math.floor(Math.random() * 10000)}`} >
                                     <Button textColor='white' colorScheme='green' bg='teal'> Im feeling random! </Button> 
-                                </MenuItem>
-                            </NextLink>
+                                </NextLink>
+                            </MenuItem>
+
+                            <Flex align={'center'} justifyContent='space-around'>
+                                <Text fontSize={20} fontWeight={'bold'} textColor={'black'}> or </Text>
+                            </Flex>
+
+
+                            <MenuItem 
+                                as={Button}
+                                isLast={undefined} 
+                                h="100%"
+                                textColor='black'
+                                onClick={(e) => e.preventDefault()}
+                                > 
+                                <Flex align={'center'} justifyContent='space-around'>
+                                    <Text fontSize={20} fontWeight={'bold'} textColor={'black'}> Choose a date </Text>
+                                </Flex>
+                                <div>
+                                    <Calendar maxDate={new Date()} onChange={setdate} value={date} />
+                                </div>
+                            </MenuItem>
+
+                            <MenuItem as={Button} 
+                                isLast={true} 
+                                textColor='black'> 
+                                <NextLink href="/select/[id]"  as={`/select/${createId(date)}`} >
+                                    <Button textColor='white' colorScheme='green' bg='teal'> Selected Date: {createId(date)} </Button> 
+                                </NextLink>
+                            </MenuItem>
+
                         </MenuList>
 
                     </>
@@ -102,7 +142,7 @@ const NavbarContainer = ({children, ...props}) => {
             p={3}
             px={1}
             bg={lightThemeGrad}
-            opacity={.9}
+            opacity={.95}
             color={["white"]}
             {...props}
         >
@@ -123,8 +163,6 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             />
             <MenuToggle toggle={toggle} isOpen={isOpen} />
             <MenuLinks isOpen={isOpen} />
-
-
 
         </NavbarContainer>
     );

@@ -6,12 +6,13 @@ interface ColonyButtonProps {
     chars: string[],
     words: string[], 
     found: string[], 
+    _id: number,
     foundUpdate: (word: string) => void,
     scoreUpdate: (addToScore: number) => void
 }
 
 
-export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUpdate, found, scoreUpdate}) => {
+export const ColonyButton: React.FC<ColonyButtonProps> = ({chars, words, foundUpdate, _id, found, scoreUpdate}) => {
     const [input, setInput] = React.useState("")
     const [openDelete, setOpenDelete] = React.useState(false); 
     const [openEnter, setOpenEnter]  = React.useState(false); 

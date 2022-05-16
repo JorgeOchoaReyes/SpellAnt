@@ -13,6 +13,7 @@ import {ColonyButton} from './ColonyButton';
 import { animationDelay } from '../Util/constants';
 import {BiArrowFromTop} from 'react-icons/bi'; 
 import { useFindDailyQuery, useGetDailyQuery } from '../../server/generated/graphql';
+import Calendar from 'react-calendar';
 
 
 interface ColonyProps {
@@ -24,7 +25,7 @@ interface RightContent {
 }
 
 
-const LeftContent = ({characters, words, foundUpdate, found, scoreUpdate}) => {
+const LeftContent = ({characters, words, foundUpdate, _id, found, scoreUpdate}) => {
 
     return (
             <VStack 
@@ -35,7 +36,8 @@ const LeftContent = ({characters, words, foundUpdate, found, scoreUpdate}) => {
                 >
                 <SlideFade delay={animationDelay} in={true} offsetX='-100px'>
                     <Box textColor='white'>
-                        <ColonyButton chars={characters} words={words} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
+                        <Text textColor={'black'}> Hex Id: {_id} </Text>
+                        <ColonyButton _id={_id} chars={characters} words={words} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
                     </Box>
                 </SlideFade>
             </VStack>
@@ -192,14 +194,12 @@ export const Colonies: React.FC<ColonyProps> = ({selectedNumber}) => {
             }
 
             <Flex h={{base: "fit", sm: "90vh", xl: '80vh'}} paddingBottom={20} align='center'  direction={{base: "column-reverse", md: "row"}}>
-                    <LeftContent  characters={data.findDaily.hexChars} words={data.findDaily.wordPool} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
+                    <LeftContent _id={data.findDaily._id} characters={data.findDaily.hexChars} words={data.findDaily.wordPool} foundUpdate={foundUpdate} found={found} scoreUpdate={scoreUpdate} /> 
                     <RightContent found={found} /> 
             </Flex> 
             <FinishModal isOpen={isOpen} onClose={onClose}  /> 
 
-            {/* <Button onClick={() => scoreUpdate(99)} />
-            <Button onClick={() => setScore(0)} />
-            <Button onClick={() => onOpen()}>open modal </Button>  */}
+
         </>
     );
 }
