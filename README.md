@@ -53,7 +53,7 @@ I love these simple word games but I dont want to pay a subscription to play the
 
 - [X] Set Global word set.
 - [X] Get Random word set. 
-- [ ] Ability to choose previous word sets from the past days
+- [X] Ability to choose previous word sets from the past days
 - [ ] Store session of user with words they have found for a day
 
 
