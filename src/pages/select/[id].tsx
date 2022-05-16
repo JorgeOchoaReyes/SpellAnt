@@ -5,7 +5,7 @@ import { createUrqlClient } from '../../Util/createUrql';
 import { useRouter } from 'next/router';
 
 
-const Index = ({name}) => {
+const Select = ({name}) => {
   const router = useRouter(); 
   const intId = typeof router.query.id === 'string' ? parseInt(router.query.id) : -1;
 
@@ -16,4 +16,4 @@ const Index = ({name}) => {
     ) 
 }
 
-export default withUrqlClient(createUrqlClient)(Index); 
+export default withUrqlClient(createUrqlClient)(Select); 

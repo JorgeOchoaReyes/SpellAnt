@@ -48,7 +48,7 @@ const MenuItem = ({children, isLast, to='/', ...rest}) => {
     )
 }
 
-const MenuLinks = ({isOpen}) => {
+const MenuLinks = ({isOpen: open}) => {
     const [date, setdate] = React.useState(new Date());
     const createId = (date: Date) => {
         let strings = [`${date.getUTCDate()}`, `${date.getUTCMonth()}`, `${date.getUTCFullYear()}`]
@@ -59,7 +59,7 @@ const MenuLinks = ({isOpen}) => {
     }
     return (
         <Box 
-            display={{base: isOpen ? 'block' : 'none', md: "block"}}
+            display={{base: open ? 'block' : 'none', md: "block"}}
             flexBasis={{base: "100%", md: "auto"}}
 
     >   
@@ -67,7 +67,7 @@ const MenuLinks = ({isOpen}) => {
                 spacing={8} 
                 align='center' 
                 justify={["center", "space-between", "flex-end", 'flex-end']}
-                direction={isOpen ?  "column" : "row"}
+                direction={open ?  "column" : "row"}
                 pt={[4, 4, 0, 0]}
             >
                 <Menu>
@@ -92,7 +92,7 @@ const MenuLinks = ({isOpen}) => {
 
 
                             <MenuItem 
-                                as={Button}
+                        
                                 isLast={undefined} 
                                 h="100%"
                                 textColor='black'
